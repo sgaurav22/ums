@@ -1,4 +1,4 @@
-package com.mav.business.ums.security;
+package com.mav.business.ums.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;

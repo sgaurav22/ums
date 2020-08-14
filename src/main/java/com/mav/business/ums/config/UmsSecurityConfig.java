@@ -1,8 +1,6 @@
-package com.mav.business.ums.security.config;
+/*
+package com.mav.business.ums.config;
 
-import com.mav.business.ums.security.CustomAccessDeniedHandler;
-import com.mav.business.ums.security.CustomAuthenticationFailureHandler;
-import com.mav.business.ums.security.CustomLogoutSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -86,3 +84,4 @@ public class UmsSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
+*/

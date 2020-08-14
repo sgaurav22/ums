@@ -1,4 +1,4 @@
-package com.mav.business.ums.security;
+package com.mav.business.ums.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
