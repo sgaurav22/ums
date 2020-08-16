@@ -4,6 +4,7 @@ import com.mav.business.ums.domain.User;
 import com.mav.business.ums.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -55,7 +56,7 @@ public class UserController {
     @RequestMapping(value="/admin/adminHome", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","This Page is available to Users with Admin Role");
@@ -66,11 +67,15 @@ public class UserController {
     @RequestMapping(value="/user/userHome", method = RequestMethod.GET)
     public ModelAndView user(){
         ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("userMessage","This Page is available to Users with User Role");
         modelAndView.setViewName("user/userHome");
         return modelAndView;
+    }
+
+    public SecurityContext getContext() {
+        return SecurityContextHolder.getContext();
     }
 }
